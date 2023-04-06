@@ -40,13 +40,13 @@
 
 .moved {
   position: absolute;
-  left: 100%;
+  left: 150%;
   z-index: 1;
   top: 30px;
-  transition: left 200ms ease-in;
+  transition: left 350ms ease-in;
   
   &.preview {
     left: 0;
-    transition: left 200ms ease-out;
+    transition: left 350ms ease-out;
   }
 }

@@ -1,0 +1,71 @@
+$circle-size: clamp(1.5rem, 5vw, 3rem);
+$spacing: clamp(0.25rem, 2vw, 0.5rem);
+
+.cstepper {
+  display: flex;
+}
+
+.cstepperItem {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  text-align: center;
+
+  &::before {
+    --size: 3rem;
+    content: "";
+    display: block;
+    width: $circle-size;
+    height: $circle-size;
+    border-radius: 50%;
+    background-color: gray;
+    opacity: 0.5;
+    margin: 0 auto 1rem;
+  }
+
+  &:not(:last-child) {
+    &:after {
+      content: "";
+      position: relative;
+      top: calc($circle-size / 2);
+      width: calc(100% - $circle-size - calc($spacing * 2));
+      left: calc(50% + calc($circle-size / 2 + $spacing));
+      height: 2px;
+      background-color: #e0e0e0;
+      order: -1;
+    }
+  }
+
+  &.active {
+    &::before {
+      background-color: red;
+    }
+
+    &:not(:last-child) {
+      &:after {
+        background-color: red;
+      }
+    }
+  }
+}
+
+.cstepperTitle {
+  font-weight: bold;
+  font-size: clamp(1rem, 4vw, 1.25rem);
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.cstepperDesc {
+  color: grey;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  padding-left: $spacing;
+  padding-right: $spacing;
+}
+
+/*** Non-demo CSS ***/
+
+.wrapper {
+  max-width: 1000px;
+  margin: 2rem auto 0;
+}

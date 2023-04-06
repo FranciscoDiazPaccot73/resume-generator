@@ -4,7 +4,10 @@ import Bullets from "./ResumeBullets";
 
 import styles from './page.module.scss';
 
-const Resume = ({ lang = "en" }) => {
+const Resume = ({ lang = "en", info }) => {
+  const {
+    name = '',
+  } = info;
   const meliBulletsEn = [
     'Contribute to the initial experience of marketing tools for Mercado Shops.',
     'Develop the frontend of the "Central de Promociones" (space where Mercado Libre platform sellers can create offers for their products) and all related applications for the massive upload of items in their promotions.',
@@ -49,7 +52,7 @@ const Resume = ({ lang = "en" }) => {
 
   return (
     <div className={`flex ${styles.letter}`}>
-      <p className="text-2xl font-bold">FRANCISCO DIAZ PACCOT</p>
+      <p className="text-2xl font-bold">{name.toUpperCase()}</p>
       <p className="text-lg font-bold mb-6">Frontend Software Engineer</p>
       <a className=" text-blue-600 underline text-sm" target="_blank" href="https://franciscodiazpaccot.dev">https://franciscodiazpaccot.dev</a>
       <div className="flex text-sm gap-1 mb-4">
