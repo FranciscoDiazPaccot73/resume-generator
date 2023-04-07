@@ -20,8 +20,6 @@ const ResumeContainer = () => {
     setInfo(prevState => ({ ...prevState, [name]: value }))
   }
 
-  console.log(resumeInfo)
-
   return (
     <div className="relative md:mx-auto md:max-w-6xl md:min-w-2xl">
       <Stepper />
