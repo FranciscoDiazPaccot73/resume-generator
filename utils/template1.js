@@ -27,7 +27,10 @@ const addBullet = (doc, info, yPos, maxLineWidth) => {
 
 const template1 = (doc, info, options) => {
   const { name, profession, country, webpage, linkedin, email } = info || {};
-  const { maxLineWidth, maxYPos } = options;
+  const { maxLineWidth, maxYPos, color = '#000' } = options;
+
+  doc.setTextColor(color);
+  doc.setFillColor(color);
 
   let yPos = 20;
   doc.setFont("default", 'bold');
@@ -44,7 +47,6 @@ const template1 = (doc, info, options) => {
   doc.setFontSize(14)
   doc.text(country, 105, yPos, null, null, "center")
 
-  doc.setFillColor(0, 0, 0);
   yPos += 15;
   addSocial(doc, 'Webpage', webpage, 20, yPos);
   doc.circle(45, yPos - 1, 1, 'FD');

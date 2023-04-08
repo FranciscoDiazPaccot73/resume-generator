@@ -4,7 +4,6 @@ import { useState } from "react";
 
 import Resume from "./Resume";
 import Form from "./From";
-import Stepper from "./Stepper";
 
 import styles from './page.module.scss';
 
@@ -22,7 +21,6 @@ const ResumeContainer = () => {
 
   return (
     <div className="relative md:mx-auto md:max-w-6xl md:min-w-2xl">
-      <Stepper />
       <Form onChange={handleChange} info={resumeInfo} />
       <button className="text-white" onClick={handlePreview}>
         EL BOTON
