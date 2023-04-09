@@ -4,7 +4,9 @@ const addSocial = (doc, text, link, x, y) => {
   });
 }
 
-const addTitle = (doc, text, x, y) => {
+const addTitle = (doc, text, x, y, color) => {
+  doc.setTextColor(color);
+  doc.setDrawColor(color);
   doc.text(text, x, y)
 
   doc.setLineWidth(1.5);
@@ -17,7 +19,7 @@ const addBoldRow = (doc, left, right, x, y) => {
 }
 
 const addBullet = (doc, info, yPos, maxLineWidth) => {
-  doc.circle(20, yPos, 0.5, 'FD');
+  doc.circle(20, yPos, 0.4, 'FD');
   const text = doc.splitTextToSize(info, maxLineWidth);
   doc.text(text, 24, yPos + 1)
   let lineHeight = doc.getLineHeight(text) / doc.internal.scaleFactor;
@@ -28,6 +30,7 @@ const addBullet = (doc, info, yPos, maxLineWidth) => {
 const template1 = (doc, info, options) => {
   const { name, profession, country, webpage, linkedin, email } = info || {};
   const { maxLineWidth, maxYPos, color = '#000' } = options;
+  const baseFontColor = '#000';
 
   doc.setTextColor(color);
   doc.setFillColor(color);
@@ -40,6 +43,7 @@ const template1 = (doc, info, options) => {
 
   yPos += 10;
   doc.setFontSize(18)
+  doc.setTextColor(baseFontColor);
   doc.text(profession, 105, yPos, null, null, "center")
   doc.setFont("default", 'normal');
 
@@ -57,9 +61,10 @@ const template1 = (doc, info, options) => {
   yPos += 15;
   doc.setFont("default", 'bold');
   doc.setFontSize(18)
-  
-  addTitle(doc, 'EXPERIENCE', 20, yPos)
 
+  addTitle(doc, 'EXPERIENCE', 20, yPos, color)
+
+  doc.setTextColor(baseFontColor);
   yPos += 12;
   doc.setFontSize(16)
   addBoldRow(doc, 'MERCADO LIBRE', 'Argentina', 20, yPos);
@@ -117,8 +122,8 @@ const template1 = (doc, info, options) => {
   yPos += blockHeight + 15;
   doc.setFont("default", 'bold');
   doc.setFontSize(18)
-  addTitle(doc, 'LANGUAGES', 20, yPos)
-  doc.text('LANGUAGES', 20, yPos)
+  addTitle(doc, 'LANGUAGES', 20, yPos, color)
+  doc.setTextColor(baseFontColor);
 
   yPos += 12;
   doc.setFont("default", 'bold');
@@ -129,7 +134,8 @@ const template1 = (doc, info, options) => {
 
   yPos += 20
   doc.setFontSize(18)
-  addTitle(doc, 'SKILLS', 20, yPos)
+  addTitle(doc, 'SKILLS', 20, yPos, color)
+  doc.setTextColor(baseFontColor);
 
   yPos +=12;
   doc.setFont("default", 'normal');

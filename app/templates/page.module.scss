@@ -1,10 +1,10 @@
-$accent: #8855ff;
+@import '../variables';
 
 .container {
   width: 650px;
   height: 650px;
   border-radius: 10px;
-  background: white;
+  background: $secondary-black;
   overflow: hidden;
   box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
     0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
@@ -13,12 +13,12 @@ $accent: #8855ff;
   flex-direction: column;
 
   nav {
-    background: #fdfdfd;
+    background: $secondary-black;
     padding: 5px 5px 0;
     border-radius: 10px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid $secondary-black;
     height: 44px;
   }
 
@@ -62,9 +62,9 @@ $accent: #8855ff;
     width: 100%;
     padding: 10px 15px;
     position: relative;
-    background: white;
+    background: $secondary-black;
     cursor: pointer;
-    color: #000;
+    color: $white;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -72,6 +72,10 @@ $accent: #8855ff;
     min-width: 0;
     position: relative;
     user-select: none;
+
+    &:hover {
+      background-color: $main-black;
+    }
   }
   
   .underline {
@@ -80,11 +84,11 @@ $accent: #8855ff;
     left: 0;
     right: 0;
     height: 1px;
-    background: $accent;
+    background: $main-color;
   }
   
   li.selected {
-    background: #eee;
+    background: $black;
   }
   
   li button {
@@ -104,7 +108,15 @@ $accent: #8855ff;
 }
 
 .color {
-  width: 20px;
-  height: 20px;
-  border-radius: 20px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  padding: 4px;
+  margin-top: 20px;
+  border: 1px solid $terciary-black;
+
+  &.active {
+    border: 2px solid $main-color;
+  }
 }

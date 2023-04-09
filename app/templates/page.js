@@ -21,17 +21,29 @@ const colors = [
 
 export default function Templates() {
   const [selectedTab, setSelectedTab] = useState(tabs[0]);
+  const [selectedColor, setSelectedColor] = useState('black');
+
+  const handleSelectColor = newColor => {
+    setSelectedColor(newColor)
+  }
 
   return (
     <div>
       <Stepper />
       <section className="flex justify-center gap-2">
         <ul className="flex items-center gap-3">
-          {colors.map(({ hex, label }) => <li key={hex} className={styles.color} style={{ backgroundColor: hex }} />)}
+          {colors.map(({ hex, label }) => (
+            <li
+              key={hex}
+              className={`${styles.color} ${selectedColor === label ? styles.active : ''}`}
+              style={{ backgroundColor: hex }}
+              onClick={() => handleSelectColor(label)}
+            />
+          ))}
         </ul>
       </section>
       <main className="m-0 p-0 mb-10 relative">
-        <section className='px-8 py-12 relative flex items-center justify-center text-black w-full'>
+        <section className='p-8 relative flex items-center justify-center text-black w-full'>
           <div className={styles.container}>
             <nav>
               <ul>
@@ -60,7 +72,7 @@ export default function Templates() {
                 >
                   {selectedTab ? (
                     <div className="p-2 rounded-lg border shadow-xl">
-                      <Image src={selectedTab.link} width={350} height={600} />
+                      <Image src={`${selectedTab.link}-${selectedColor}.png`} width={350} height={600} />
                     </div>
                   ) : "😋"}
                 </motion.div>

@@ -12,7 +12,7 @@ const Download = ({ info }) => {
   const createForm = async () => {
     const inf = { name, webpage, profession, country, email, linkedin };
 
-    createTemplate('template1', inf)
+    createTemplate('template2', inf)
   }
 
   return (
