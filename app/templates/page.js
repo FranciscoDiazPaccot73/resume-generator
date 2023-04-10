@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import Image from "next/image";
 import Stepper from "../Stepper";
+import TemplatesSection from "./Templates";
 
 import { initialTabs as tabs } from "@/utils/templates";
 
@@ -22,6 +22,7 @@ const colors = [
 export default function Templates() {
   const [selectedTab, setSelectedTab] = useState(tabs[0]);
   const [selectedColor, setSelectedColor] = useState('black');
+  const [activeStep, setActiveStep] = useState('config');
 
   const handleSelectColor = newColor => {
     setSelectedColor(newColor)
@@ -29,9 +30,9 @@ export default function Templates() {
 
   return (
     <div>
-      <Stepper />
+      <Stepper activeStep={activeStep} />
       <section className="flex justify-center gap-2">
-        <ul className="flex items-center gap-3">
+        <ul className={`flex items-center justify-center gap-1 rounded-full ${styles.colors}`}>
           {colors.map(({ hex, label }) => (
             <li
               key={hex}
@@ -42,45 +43,22 @@ export default function Templates() {
           ))}
         </ul>
       </section>
-      <main className="m-0 p-0 mb-10 relative">
-        <section className='p-8 relative flex items-center justify-center text-black w-full'>
-          <div className={styles.container}>
-            <nav>
-              <ul>
-                {tabs.map((item) => (
-                  <li
-                    key={item.label}
-                    className={item === selectedTab ? styles.selected : ""}
-                    onClick={() => setSelectedTab(item)}
-                  >
-                    {item.label}
-                    {item === selectedTab ? (
-                      <motion.div className={styles.underline} layoutId="underline" />
-                    ) : null}
-                  </li>
-                ))}
-              </ul>
-            </nav>
-            <main>
-              <AnimatePresence mode='wait'>
-                <motion.div
-                  key={selectedTab ? selectedTab.label : "empty"}
-                  initial={{ y: 10, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -10, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {selectedTab ? (
-                    <div className="p-2 rounded-lg border shadow-xl">
-                      <Image src={`${selectedTab.link}-${selectedColor}.png`} width={350} height={600} />
-                    </div>
-                  ) : "😋"}
-                </motion.div>
-              </AnimatePresence>
-            </main>
-          </div>
-        </section>
-      </main>
+      <AnimatePresence mode='wait'>
+        <motion.div
+          key={activeStep}
+          initial={{ x: 10, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: -10, opacity: 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          <TemplatesSection
+            selectedColor={selectedColor}
+            tabs={tabs}
+            selectedTab={selectedTab}
+            setSelectedTab={(val) => setSelectedTab(val)}
+          />
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 }

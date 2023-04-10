@@ -18,7 +18,7 @@
     border-radius: 10px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    border-bottom: 1px solid $secondary-black;
+    border-bottom: 1px solid $terciary-black;
     height: 44px;
   }
 
@@ -60,7 +60,7 @@
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     width: 100%;
-    padding: 10px 15px;
+    padding: 8px 15px;
     position: relative;
     background: $secondary-black;
     cursor: pointer;
@@ -107,16 +107,24 @@
   }
 }
 
-.color {
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  padding: 4px;
+.colors {
+  background-color: $secondary-black;
   margin-top: 20px;
-  border: 1px solid $terciary-black;
+  padding: 1rem;
 
-  &.active {
-    border: 2px solid $main-color;
+  .color {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    padding: 4px;
+    border: 1px solid $terciary-black;
+    opacity: .75;
+  
+    &.active {
+      border: 3px solid $main-color;
+      opacity: 1;
+    }
+
   }
 }

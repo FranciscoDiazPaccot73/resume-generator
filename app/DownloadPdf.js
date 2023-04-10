@@ -17,7 +17,7 @@ const Download = ({ info }) => {
 
   return (
     <section>
-      <button onClick={createForm}>Create PDF</button>
+      <button className="text-orange-500" onClick={createForm}>Create PDF</button>
     </section>
   )
 }

@@ -22,7 +22,7 @@ export const createTemplate = (type, info) => {
 
 export const allIngredients = [
   { link: "/minimalist", label: "Minimalist" },
-  { link: "/minimalist", label: "Formal" },
+  { link: "/formal", label: "Formal" },
 ];
 
 const [minimalist, minimalist2] = allIngredients;
