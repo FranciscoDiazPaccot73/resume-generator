@@ -14,8 +14,7 @@ const getButtonNextLabel = (current) => {
   return steps[nextIndex].label;
 }
 
-const Header = ({ prevStep, nextStep, colors, selectedColor, handleSelectColor, activeStep }) =>{
-  console.log(activeStep, "activeStep")
+const Header = ({ prevStep, nextStep, colors, selectedColor, handleSelectColor, activeStep }) => {
   return (
     <section className="flex justify-center gap-3 mt-6">
       <ul className={`flex items-center justify-center gap-1 rounded-full ${styles.colors}`}>

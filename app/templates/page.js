@@ -37,7 +37,8 @@ export default function Templates() {
 
   const components = {
     config: () => <TemplatesSection {...templateProps} />,
-    heading: () => <ResumeContainer />,
+    heading: () => <ResumeContainer imageSrc={`${selectedTab.link}-${selectedColor}.png`} />,
+    work: () => <ResumeContainer imageSrc={`${selectedTab.link}-${selectedColor}.png`} />,
   }
 
   const Component = components[activeStep] || (() => <></>);

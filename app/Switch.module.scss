@@ -1,11 +1,14 @@
+@import './variables';
+
 .switch {
   position: relative;
   display: inline-block;
-  width: 40px;
-  height: 24px;
+  width: 32px;
+  height: 20px;
+  margin-right: 0.5rem;
 
   .switchLabel {
-    color: #fff;
+    color: $white;
     display: inline-block;
     font-size: 12px;
     position: absolute;
@@ -28,7 +31,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: gray;
+  background-color: $terciary-black;
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -36,27 +39,27 @@
 .slider:before {
   position: absolute;
   content: "";
-  height: 16px;
-  width: 16px;
+  height: 12px;
+  width: 12px;
   left: 4px;
   bottom: 4px;
-  background-color: #fff;
+  background-color: $white;
   -webkit-transition: .4s;
   transition: .4s;
 }
 
 input:checked + .slider {
-  background-color: red;
+  background-color: $main-color;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px red;
+  box-shadow: 0 0 1px $main-color;
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(16px);
-  -ms-transform: translateX(16px);
-  transform: translateX(16px);
+  -webkit-transform: translateX(12px);
+  -ms-transform: translateX(12px);
+  transform: translateX(12px);
 }
 
 /* Rounded sliders */

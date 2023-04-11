@@ -4,6 +4,8 @@ import { useState } from "react";
 
 import FormRow from "./FormRow";
 
+import styles from './Form.module.scss';
+
 const Form = ({ info, onChange }) => {
   const [checks, setChecks] = useState({
     city: false,
@@ -21,7 +23,7 @@ const Form = ({ info, onChange }) => {
   }
 
   return (
-    <form className="p-10 max-w-3xl">
+    <form className={`p-10 max-w-4xl flex gap-6 flex-col ${styles.form}`}>
       <FormRow
         onChange={onChange}
         left={{ label: 'First Name', name: 'name', value: info.name }}

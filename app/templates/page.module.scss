@@ -127,3 +127,18 @@
 
   }
 }
+
+.previewButton {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 400;
+  padding: 1px;
+  width: 5rem;
+  background-color: $main-color;
+  color: $black;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 12px;
+}

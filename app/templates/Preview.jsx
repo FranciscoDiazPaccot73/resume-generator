@@ -1,34 +1,25 @@
-import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const Preview = ({ src = '/formal-black.png' }) => {
-  const [isFullscreen, setIsFullscreen] = useState(false);
+import styles from './page.module.scss';
 
-  const handleClick = () => {
-    setIsFullscreen(!isFullscreen);
-  };
-
+const Preview = ({ imageSrc }) => {
   return (
       <AnimatePresence mode="wait">
         <motion.div
-          key={isFullscreen}
-          onClick={handleClick}
-          animate={isFullscreen ? { width: "80%", height: "80%" } : { height: '200px', width: "150px" }}
           transition={{ duration: 0.2 }}
-          whileHover={isFullscreen ? { scale: 1 } : { scale: 1.1 }}
+          whileHover={{ scale: 1.1 }}
           style={{
+            height: "200px",
+            width: "159px",
             position: "relative",
             cursor: "pointer",
             borderRadius: '20px',
             overflow: 'hidden',
-            marginTop: 'auto',
-            marginBottom: 'auto'
+            marginTop: '3rem',
           }}
         >
-          <img
-            src={src}
-            alt="Preview"
-          />
+          <img src={imageSrc} alt="Preview" />
+          <div className={styles.previewButton}>Preview</div>
         </motion.div>
       </AnimatePresence>
   );

@@ -5,13 +5,8 @@ import { useState } from "react";
 import Form from "./From";
 import Preview from "./templates/Preview";
 
-import styles from './page.module.scss';
-
-const ResumeContainer = () => {
-  const [preview, setPreview] = useState(false)
+const ResumeContainer = ({ imageSrc }) => {
   const [resumeInfo, setInfo] = useState({})
-
-  const handlePreview = () => setPreview(prevState => !prevState);
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -21,13 +16,10 @@ const ResumeContainer = () => {
 
   return (
     <div className="relative md:mx-auto md:max-w-6xl md:min-w-2xl">
-      <section className="flex justify-center">
+      <section className="flex justify-center my-8 gap-6">
         <Form onChange={handleChange} info={resumeInfo} />
-        <Preview />
+        <Preview imageSrc={imageSrc} />
       </section>
-      <button className="text-white" onClick={handlePreview}>
-        EL BOTON
-      </button>
     </div>
   )
 }
