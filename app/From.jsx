@@ -21,7 +21,7 @@ const Form = ({ info, onChange }) => {
   }
 
   return (
-    <form className="p-10 max-w-3xl mx-auto">
+    <form className="p-10 max-w-3xl">
       <FormRow
         onChange={onChange}
         left={{ label: 'First Name', name: 'name', value: info.name }}

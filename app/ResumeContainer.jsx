@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 
-import Resume from "./Resume";
 import Form from "./From";
+import Preview from "./templates/Preview";
 
 import styles from './page.module.scss';
 
@@ -21,13 +21,13 @@ const ResumeContainer = () => {
 
   return (
     <div className="relative md:mx-auto md:max-w-6xl md:min-w-2xl">
-      <Form onChange={handleChange} info={resumeInfo} />
+      <section className="flex justify-center">
+        <Form onChange={handleChange} info={resumeInfo} />
+        <Preview />
+      </section>
       <button className="text-white" onClick={handlePreview}>
         EL BOTON
       </button>
-      <div className={`${styles.moved} ${preview ? styles.preview : ''}`}>
-        <Resume info={resumeInfo} />
-      </div>
     </div>
   )
 }

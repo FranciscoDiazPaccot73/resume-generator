@@ -4,11 +4,11 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import Stepper from "../Stepper";
+import Header from "./Header";
 import TemplatesSection from "./Templates";
+import ResumeContainer from "../ResumeContainer";
 
 import { initialTabs as tabs } from "@/utils/templates";
-
-import styles from './page.module.scss';
 
 const colors = [
   {hex: '#000', label: 'black'},
@@ -19,30 +19,60 @@ const colors = [
   {hex: '#dd651e', label: 'orange'},
 ]
 
+export const steps = [
+  { id: 'config', label: "Configuration" },
+  { id: 'heading', label: "Heading" },
+  { id: 'work', label: "Work Hostory" },
+  { id: 'education', label: "Education" },
+  { id: 'skills', label: "Skills" },
+  { id: 'confirm', label: "Confirmation" },
+]
+
 export default function Templates() {
   const [selectedTab, setSelectedTab] = useState(tabs[0]);
   const [selectedColor, setSelectedColor] = useState('black');
   const [activeStep, setActiveStep] = useState('config');
 
+  const templateProps = { selectedColor, tabs, selectedTab, setSelectedTab: (val) => setSelectedTab(val)};
+
+  const components = {
+    config: () => <TemplatesSection {...templateProps} />,
+    heading: () => <ResumeContainer />,
+  }
+
+  const Component = components[activeStep] || (() => <></>);
+
   const handleSelectColor = newColor => {
     setSelectedColor(newColor)
   }
 
+  const handlePrevStep = (step) => {
+    if (step !== 'config') {
+      const prevIndex = steps?.map(e => e.id).indexOf(step) - 1;
+  
+      setActiveStep(steps[prevIndex].id)
+    }
+  }
+
+  const handleNextStep = (step) => {
+    if (step !== 'confirm') {
+      const nextIndex = steps?.map(e => e.id).indexOf(step) + 1;
+  
+      setActiveStep(steps[nextIndex].id)
+    }
+  }
+
   return (
     <div>
-      <Stepper activeStep={activeStep} />
-      <section className="flex justify-center gap-2">
-        <ul className={`flex items-center justify-center gap-1 rounded-full ${styles.colors}`}>
-          {colors.map(({ hex, label }) => (
-            <li
-              key={hex}
-              className={`${styles.color} ${selectedColor === label ? styles.active : ''}`}
-              style={{ backgroundColor: hex }}
-              onClick={() => handleSelectColor(label)}
-            />
-          ))}
-        </ul>
-      </section>
+      <Stepper activeStep={activeStep} steps={steps} />
+      <Header
+        colors={colors}
+        selectedColor={selectedColor}
+        handleSelectColor={handleSelectColor}
+        activeStep={activeStep}
+        nextStep={handleNextStep}
+        prevStep={handlePrevStep}
+      />
       <AnimatePresence mode='wait'>
         <motion.div
           key={activeStep}
@@ -51,12 +81,7 @@ export default function Templates() {
           exit={{ x: -10, opacity: 0 }}
           transition={{ duration: 0.2 }}
         >
-          <TemplatesSection
-            selectedColor={selectedColor}
-            tabs={tabs}
-            selectedTab={selectedTab}
-            setSelectedTab={(val) => setSelectedTab(val)}
-          />
+          <Component />
         </motion.div>
       </AnimatePresence>
     </div>

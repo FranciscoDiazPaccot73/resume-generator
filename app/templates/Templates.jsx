@@ -7,10 +7,8 @@ import Image from "next/image";
 import styles from './page.module.scss';
 
 const TemplatesSection = ({ setSelectedTab, selectedTab, tabs, selectedColor }) => {
-
-
   return (
-  <main className="m-0 p-0 mb-10 relative">
+    <main className="m-0 p-0 mb-10 relative">
       <section className='p-8 relative flex items-center justify-center text-black w-full'>
         <div className={styles.container}>
           <nav>

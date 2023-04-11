@@ -1,0 +1,33 @@
+@import './variables';
+
+.button {
+  &.default {
+    background-color: $main-color;
+    color: $black;
+    width: 9rem;
+    
+    &:hover {
+      background-color: $main-color-dark;
+    }
+  }
+  
+  &.transparent {
+    background-color: transparent;
+    color: $main-color;
+    width: 4rem;
+  
+    &:hover {
+      background-color: $main-color-40;
+    }
+  }
+
+  &:disabled {
+    &.transparent {
+      color: gray;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+}
