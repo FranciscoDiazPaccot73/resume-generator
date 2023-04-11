@@ -2,12 +2,19 @@ import ResumeTitle from "./ResumeTitle";
 import TextSplitted from "./TextSplitted";
 import Bullets from "./ResumeBullets";
 
-import styles from './page.module.scss';
+import styles from './Resume.module.scss';
 
 const Resume = ({ lang = "en", info }) => {
   const {
     name = '',
+    surname = '',
+    profession = '',
+    webpage = '',
+    country = '',
+    email = '',
+    linkedin = '',
   } = info;
+  console.log(info)
   const meliBulletsEn = [
     'Contribute to the initial experience of marketing tools for Mercado Shops.',
     'Develop the frontend of the "Central de Promociones" (space where Mercado Libre platform sellers can create offers for their products) and all related applications for the massive upload of items in their promotions.',
@@ -51,14 +58,14 @@ const Resume = ({ lang = "en", info }) => {
 
 
   return (
-    <div className={`flex ${styles.letter}`}>
-      <p className="text-2xl font-bold">{name.toUpperCase()}</p>
-      <p className="text-lg font-bold mb-6">Frontend Software Engineer</p>
-      <a className=" text-blue-600 underline text-sm" target="_blank" href="https://franciscodiazpaccot.dev">https://franciscodiazpaccot.dev</a>
+    <div className={`flex flex-col px-2`}>
+      {name ? <p className="text-2xl font-bold">{name.toUpperCase()} <span>{surname.toUpperCase()}</span></p> : null}
+      {profession ? <p className="text-lg font-bold mb-6">{profession}</p> : null}
+      {webpage ? <a className="text-blue-600 underline text-sm" target="_blank" href={webpage}>Webpage</a> : null}
       <div className="flex text-sm gap-1 mb-4">
-        <p className="">Argentina</p>&#x2022;
-        <a className=" text-blue-600 underline" target="_blank" href="mailto:fran.diazpaccot@gmail.com">fran.diazpaccot@gmail.com</a>&#x2022;
-        <a className=" text-blue-600 underline" target="_blank" href="https://www.linkedin.com/in/francisco-diaz-paccot-a98a36130/">Linkedin</a>
+        {country ? <p>{country}</p> : null}
+        {email ? <a className=" text-blue-600 underline" target="_blank" href={`mailto:${email}`}>&#x2022; Email</a> : null}
+        {linkedin ? <a className=" text-blue-600 underline" target="_blank" href={linkedin}>&#x2022; Linkedin</a> : null}
       </div>
       <div className="w-full">
         <ResumeTitle label={experienceLabel} />

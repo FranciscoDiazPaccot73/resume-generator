@@ -1,0 +1,35 @@
+@import './variables';
+
+.article  {
+  height: 200px;
+  width: 160px;
+  transition: all 160ms ease-in;
+  cursor: pointer;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(to bottom, transparent 10%, rgba(0,0,0,.5) 50%, rgba(0,0,0) 95%);
+    z-index: 1;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+    transition: all 160ms ease-in;
+  }
+}
+
+.letter1 {
+  align-items: center;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  flex-direction: column;
+  margin: 26px auto;
+  max-width: 850px;
+  min-height: 300px;
+  padding: 4rem 3rem;
+  position: relative;
+}

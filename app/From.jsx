@@ -6,7 +6,7 @@ import FormRow from "./FormRow";
 
 import styles from './Form.module.scss';
 
-const Form = ({ info, onChange }) => {
+const Form = () => {
   const [checks, setChecks] = useState({
     city: false,
     country: false,
@@ -25,46 +25,40 @@ const Form = ({ info, onChange }) => {
   return (
     <form className={`p-10 max-w-4xl flex gap-6 flex-col ${styles.form}`}>
       <FormRow
-        onChange={onChange}
-        left={{ label: 'First Name', name: 'name', value: info.name }}
-        right={{ label: 'Surname', name: 'surname', value: info.surname }}
+        left={{ label: 'First Name', name: 'name' }}
+        right={{ label: 'Surname', name: 'surname' }}
       />
       <FormRow
-        onChange={onChange}
-        left={{ label: 'Profession', name: 'profession', value: info.profession }}
-        right={{ label: 'City - State', name: 'city', value: info.city }}
+        left={{ label: 'Profession', name: 'profession' }}
+        right={{ label: 'City - State', name: 'city' }}
         checks={{ rightSwitch: 'city', rightChecked: checks.city }}
         handleSwitch={handleSwitch}
       />
       <FormRow
-        onChange={onChange}
-        left={{ label: 'Email', name: 'email', value: info.email }}
-        right={{ label: 'Phone', name: 'phone', value: info.phone }}
+        left={{ label: 'Email', name: 'email' }}
+        right={{ label: 'Phone', name: 'phone' }}
         checks={{ rightSwitch: 'phone', rightChecked: checks.phone }}
         handleSwitch={handleSwitch}
       />
       <FormRow
-        onChange={onChange}
-        left={{ label: 'Zip Code', name: 'zipcode', value: info.zipcode }}
-        right={{ label: 'Country', name: 'country', value: info.country }}
+        left={{ label: 'Zip Code', name: 'zipcode' }}
+        right={{ label: 'Country', name: 'country' }}
         checks={
           { rightSwitch: 'zipcode', rightChecked: checks.zipcode, leftSwitch: 'country', leftChecked: checks.country }
         }
         handleSwitch={handleSwitch}
       />
       <FormRow
-        onChange={onChange}
-        left={{ label: 'Webpage', name: 'webpage', value: info.webpage }}
-        right={{ label: 'Linkedin', name: 'linkedin', value: info.linkedin }}
+        left={{ label: 'Webpage', name: 'webpage' }}
+        right={{ label: 'Linkedin', name: 'linkedin' }}
         checks={
           { rightSwitch: 'linkedin', rightChecked: checks.linkedin, leftSwitch: 'webpage', leftChecked: checks.webpage }
         }
         handleSwitch={handleSwitch}
       />
       <FormRow
-        onChange={onChange}
-        left={{ label: 'Twitter', name: 'twitter', value: info.twitter }}
-        right={{ label: 'Instagram', name: 'instagram', value: info.instagram }}
+        left={{ label: 'Twitter', name: 'twitter' }}
+        right={{ label: 'Instagram', name: 'instagram' }}
         checks={
           { rightSwitch: 'instagram', rightChecked: checks.instagram, leftSwitch: 'twitter', leftChecked: checks.twitter }
         }
