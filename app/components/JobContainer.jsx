@@ -1,11 +1,9 @@
-'use client'
-
-import Form from "./From";
-import Preview from "./templates/Preview";
+import Form from "./FromWork";
+import Preview from "./Preview";
 
 import styles from './Resume.module.scss';
 
-const ResumeContainer = ({ imageSrc, previewClick }) => {
+const JobContainer = ({ imageSrc, previewClick }) => {
   return (
     <div className="relative md:mx-auto md:max-w-6xl md:min-w-2xl">
       <section className="flex justify-center my-8 gap-6">
@@ -18,4 +16,4 @@ const ResumeContainer = ({ imageSrc, previewClick }) => {
   )
 }
 
-export default ResumeContainer;
+export default JobContainer;

@@ -4,32 +4,16 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Provider } from "react-redux";
 
-import Stepper from "../Stepper";
-import Header from "./Header";
-import Modal from "./Modal";
-import TemplatesSection from "./Templates";
-import ResumeContainer from "../ResumeContainer";
+import Stepper from "../components/Stepper";
+import Header from "../components/Header";
+import Modal from "../components/Modal";
+import TemplatesSection from "../components/Templates";
+import ResumeContainer from "../components/ResumeContainer";
+import JobContainer from "../components/JobContainer";
 
 import { store } from "@/store";
 import { initialTabs as tabs } from "@/utils/templates";
-
-const colors = [
-  {hex: '#000', label: 'black'},
-  {hex: '#e30812', label: 'red'},
-  {hex: '#9c1edd', label: 'purple'},
-  {hex: '#e730d9', label: 'pink'},
-  {hex: '#1e24dd', label: 'blue'},
-  {hex: '#dd651e', label: 'orange'},
-]
-
-export const steps = [
-  { id: 'config', label: "Configuration" },
-  { id: 'heading', label: "Heading" },
-  { id: 'work', label: "Work Hostory" },
-  { id: 'education', label: "Education" },
-  { id: 'skills', label: "Skills" },
-  { id: 'confirm', label: "Confirmation" },
-]
+import { colors } from "@/utils/constants";
 
 export default function Templates() {
   const [selectedTab, setSelectedTab] = useState(tabs[0]);
@@ -44,7 +28,7 @@ export default function Templates() {
   const components = {
     config: () => <TemplatesSection {...templateProps} />,
     heading: () => <ResumeContainer {...resumeProps} />,
-    work: () => <ResumeContainer imageSrc={`${selectedTab.link}-${selectedColor}.png`} />,
+    work: () => <JobContainer {...resumeProps} />,
   }
 
   const Component = components[activeStep] || (() => <></>);
@@ -53,25 +37,14 @@ export default function Templates() {
     setSelectedColor(newColor)
   }
 
-  const handlePrevStep = (step) => {
-    if (step !== 'config') {
-      const prevIndex = steps?.map(e => e.id).indexOf(step) - 1;
-  
-      setActiveStep(steps[prevIndex].id)
-    }
-  }
-
-  const handleNextStep = (step) => {
-    if (step !== 'confirm') {
-      const nextIndex = steps?.map(e => e.id).indexOf(step) + 1;
-  
-      setActiveStep(steps[nextIndex].id)
-    }
-  }
-
   return (
     <Provider store={store}>
       <main>
+        <Stepper
+          activeStep={activeStep}
+          onAction={newValue => setActiveStep(newValue)}
+          disabled={modal}
+        />
         <motion.div
           animate={{
             scale: modal ? 0.95 : 1,
@@ -79,14 +52,11 @@ export default function Templates() {
           }}
           transition={{ type: "spring", bounce: 0, duration: 0.4 }}
         >
-          <Stepper activeStep={activeStep} steps={steps} />
           <Header
             colors={colors}
             selectedColor={selectedColor}
             handleSelectColor={handleSelectColor}
             activeStep={activeStep}
-            nextStep={handleNextStep}
-            prevStep={handlePrevStep}
           />
           <AnimatePresence mode='wait'>
             <motion.div

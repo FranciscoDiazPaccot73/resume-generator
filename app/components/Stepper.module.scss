@@ -1,0 +1,33 @@
+@import '../variables';
+
+.box {
+  align-items: center;
+  background: $main-color;
+  border-radius: 50%;
+  color: $black;
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  width: 50px;
+
+  p {
+    font-size: 24px;
+    font-weight: 600;
+  }
+}
+
+.wrapper {
+  background-color: $main-black;
+  border-bottom: 1px solid $secondary-black;
+  height: 8.5rem;
+  left: 50%;
+  position: fixed;
+  top: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  z-index: 2;
+
+  &.disabled {
+    opacity: .5;
+  }
+}

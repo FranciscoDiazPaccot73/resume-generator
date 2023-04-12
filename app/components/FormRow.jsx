@@ -5,7 +5,7 @@ import Input from "./Input";
 const getPlaceholder = (name) => {
   const placeholders = {
     name: 'e.g. Joe',
-    surname: 'e.h. Doe',
+    surname: 'e.g. Doe',
     profession: "e.g. Developer",
     city: "e.g. Santa Fe - SF",
     email: 'e.g. test@sample.com',

@@ -14,7 +14,6 @@ const Resume = ({ lang = "en", info }) => {
     email = '',
     linkedin = '',
   } = info;
-  console.log(info)
   const meliBulletsEn = [
     'Contribute to the initial experience of marketing tools for Mercado Shops.',
     'Develop the frontend of the "Central de Promociones" (space where Mercado Libre platform sellers can create offers for their products) and all related applications for the massive upload of items in their promotions.',

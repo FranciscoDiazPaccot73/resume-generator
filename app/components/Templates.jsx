@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
-import styles from './page.module.scss';
+import styles from '../templates/page.module.scss';
 
 const TemplatesSection = ({ setSelectedTab, selectedTab, tabs, selectedColor }) => {
   return (
@@ -36,7 +36,7 @@ const TemplatesSection = ({ setSelectedTab, selectedTab, tabs, selectedColor }) 
                 transition={{ duration: 0.2 }}
               >
                 {selectedTab ? (
-                  <div className="p-2 rounded-lg border shadow-xl">
+                  <div className="p-2 shadow-xl">
                     <Image src={`${selectedTab.link}-${selectedColor}.png`} width={350} height={600} />
                   </div>
                 ) : "😋"}
