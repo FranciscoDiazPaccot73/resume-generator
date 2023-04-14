@@ -16,6 +16,8 @@ const getPlaceholder = (name) => {
     linkedin: "e.g. https://www.linkedin.com/in/francisco-diaz-paccot-a98a36130/",
     twitter: 'e.g. @sample',
     instagram: 'e.g. @sample',
+    job: 'e.g. Sr. Software Engineer',
+    employer: 'e.g. Mercado Libre',
   }
 
   return placeholders[name] || '';

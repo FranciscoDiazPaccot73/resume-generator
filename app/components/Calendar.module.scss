@@ -1,0 +1,9 @@
+@import '../variables';
+
+.calendar {
+  button {
+    &.react-calendar__tile--active{
+      background-color: red;
+    }
+  }
+}

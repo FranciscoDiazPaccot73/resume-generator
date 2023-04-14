@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import FormRow from "./FormRow";
+import Calendar from "./Calendar";
 
 import styles from './Form.module.scss';
 
@@ -27,6 +28,7 @@ const Form = () => {
         left={{ label: 'Start Date', name: 'startDate' }}
         right={{ label: 'End Date', name: 'endDate' }}
       />
+      <Calendar />
     </form>
   )
 }
