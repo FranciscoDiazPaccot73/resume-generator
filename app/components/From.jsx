@@ -1,21 +1,25 @@
 'use client'
 
-import { useState } from "react";
+import { store } from "@/store";
+import { memo, useState } from "react";
 
 import FormRow from "./FormRow";
 
 import styles from './Form.module.scss';
 
 const Form = () => {
+  const { globalInfo } = store.getState().state;
+  const { city, country, zipcode, phone, webpage, linkedin, twitter, instagram } = globalInfo;
+
   const [checks, setChecks] = useState({
-    city: false,
-    country: false,
-    zipcode: false,
-    phone: false,
-    webpage: false,
-    linkedin: false,
-    twitter: false,
-    instagram: false,
+    city,
+    country,
+    zipcode,
+    phone,
+    webpage,
+    linkedin,
+    twitter,
+    instagram,
   })
 
   const handleSwitch = (name) => {
@@ -68,4 +72,4 @@ const Form = () => {
   )
 }
 
-export default Form;
+export default memo(Form);

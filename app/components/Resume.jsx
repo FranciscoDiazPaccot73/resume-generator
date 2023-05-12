@@ -1,8 +1,7 @@
+import Bullets from "./ResumeBullets";
 import ResumeTitle from "./ResumeTitle";
 import TextSplitted from "./TextSplitted";
-import Bullets from "./ResumeBullets";
 
-import styles from './Resume.module.scss';
 
 const Resume = ({ lang = "en", info }) => {
   const {
@@ -11,9 +10,11 @@ const Resume = ({ lang = "en", info }) => {
     profession = '',
     webpage = '',
     country = '',
+    city = '',
     email = '',
     linkedin = '',
   } = info;
+  console.log(info)
   const meliBulletsEn = [
     'Contribute to the initial experience of marketing tools for Mercado Shops.',
     'Develop the frontend of the "Central de Promociones" (space where Mercado Libre platform sellers can create offers for their products) and all related applications for the massive upload of items in their promotions.',
@@ -62,7 +63,8 @@ const Resume = ({ lang = "en", info }) => {
       {profession ? <p className="text-lg font-bold mb-6">{profession}</p> : null}
       {webpage ? <a className="text-blue-600 underline text-sm" target="_blank" href={webpage}>Webpage</a> : null}
       <div className="flex text-sm gap-1 mb-4">
-        {country ? <p>{country}</p> : null}
+        {city ? <p>{city}</p> : null}
+        {country ? <p>&#x2022; {country}</p> : null}
         {email ? <a className=" text-blue-600 underline" target="_blank" href={`mailto:${email}`}>&#x2022; Email</a> : null}
         {linkedin ? <a className=" text-blue-600 underline" target="_blank" href={linkedin}>&#x2022; Linkedin</a> : null}
       </div>

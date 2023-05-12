@@ -1,19 +1,19 @@
 'use client'
 
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Provider } from "react-redux";
 
-import Stepper from "../components/Stepper";
 import Header from "../components/Header";
-import Modal from "../components/Modal";
-import TemplatesSection from "../components/Templates";
-import ResumeContainer from "../components/ResumeContainer";
 import JobContainer from "../components/JobContainer";
+import Modal from "../components/Modal";
+import ResumeContainer from "../components/ResumeContainer";
+import Stepper from "../components/Stepper";
+import TemplatesSection from "../components/Templates";
 
 import { store } from "@/store";
-import { initialTabs as tabs } from "@/utils/templates";
 import { colors } from "@/utils/constants";
+import { initialTabs as tabs } from "@/utils/templates";
 
 export default function Templates() {
   const [selectedTab, setSelectedTab] = useState(tabs[0]);

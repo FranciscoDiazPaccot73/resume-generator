@@ -23,7 +23,7 @@ const getPlaceholder = (name) => {
   return placeholders[name] || '';
 }
 
-const FormRow = ({ left, right, checks, handleSwitch }) => {
+const FormRow = ({ left, right, checks, handleSwitch, customSave }) => {
   const { label: leftLabel, name: leftName } = left;
   const { label: rLabel, name: rName } = right;
   const { leftSwitch, rightSwitch } = checks || {};
@@ -37,6 +37,7 @@ const FormRow = ({ left, right, checks, handleSwitch }) => {
         switchStatus={checks?.leftChecked}
         name={leftName}
         placeholder={getPlaceholder(leftName)}
+        customSave={customSave}
       />
       <Input
         label={rLabel}
@@ -45,6 +46,7 @@ const FormRow = ({ left, right, checks, handleSwitch }) => {
         switchStatus={checks?.rightChecked}
         name={rName}
         placeholder={getPlaceholder(rName)}
+        customSave={customSave}
       />
     </div>
   )

@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 
 import 'react-calendar/dist/Calendar.css';
 import styles from './Calendar.module.scss';
 
-const  CalendarComponent = () => {
-  const [value, onChange] = useState(new Date());
+const  CalendarComponent = ({ onChange, value }) => {
+  const handleChange = (val) => {
+    onChange(val)
+  }
 
   return (
     <div>
-      <Calendar className={styles.calendar} onChange={onChange} value={value} maxDate={new Date()} />
+      <Calendar className={styles.calendar} onChange={handleChange} value={value} maxDate={new Date()} />
     </div>
   );
 }
