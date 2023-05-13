@@ -1,13 +1,13 @@
-import { jsPDF } from "jspdf";
+import { jsPDF } from 'jspdf';
 
-import template1 from "./template1";
-import template2 from "./template2";
+import template1 from './template1';
+import template2 from './template2';
 
 export const createTemplate = (type, info) => {
   const templateList = {
     template1,
     template2,
-  }
+  };
 
   const executeTemplate = templateList[type] || null;
 
@@ -17,18 +17,20 @@ export const createTemplate = (type, info) => {
   const maxLineWidth = 170;
   const maxYPos = 275;
 
-  return executeTemplate(doc, info, { maxLineWidth, maxYPos, color: '#000' })
-}
+  return executeTemplate(doc, info, { maxLineWidth, maxYPos, color: '#000' });
+};
 
 export const allIngredients = [
-  { link: "/minimalist", label: "Minimalist" },
-  { link: "/formal", label: "Formal" },
+  { link: '/minimalist', label: 'Minimalist' },
+  { link: '/formal', label: 'Formal' },
 ];
 
 const [minimalist, minimalist2] = allIngredients;
+
 export const initialTabs = [minimalist, minimalist2];
 
 export function getNextIngredient(ingredients) {
   const existing = new Set(ingredients);
+
   return allIngredients.find((ingredient) => !existing.has(ingredient));
 }

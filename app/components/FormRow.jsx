@@ -1,27 +1,27 @@
-'use client'
+'use client';
 
-import Input from "./Input";
+import Input from './Input';
 
 const getPlaceholder = (name) => {
   const placeholders = {
     name: 'e.g. Joe',
     surname: 'e.g. Doe',
-    profession: "e.g. Developer",
-    city: "e.g. Santa Fe - SF",
+    profession: 'e.g. Developer',
+    city: 'e.g. Santa Fe - SF',
     email: 'e.g. test@sample.com',
     phone: 'e.g. +540303456',
-    zipcode: "e.g. 3000",
+    zipcode: 'e.g. 3000',
     country: 'e.g. Argentina',
     webpage: 'e.g. htpps://franciscodiazpaccot.dev',
-    linkedin: "e.g. https://www.linkedin.com/in/francisco-diaz-paccot-a98a36130/",
+    linkedin: 'e.g. https://www.linkedin.com/in/francisco-diaz-paccot-a98a36130/',
     twitter: 'e.g. @sample',
     instagram: 'e.g. @sample',
     job: 'e.g. Sr. Software Engineer',
     employer: 'e.g. Mercado Libre',
-  }
+  };
 
   return placeholders[name] || '';
-}
+};
 
 const FormRow = ({ left, right, checks, handleSwitch, customSave }) => {
   const { label: leftLabel, name: leftName } = left;
@@ -31,25 +31,25 @@ const FormRow = ({ left, right, checks, handleSwitch, customSave }) => {
   return (
     <div className="flex justify-between gap-4">
       <Input
-        label={leftLabel}
-        switchItem={leftSwitch}
+        customSave={customSave}
         handleSwitch={handleSwitch}
-        switchStatus={checks?.leftChecked}
+        label={leftLabel}
         name={leftName}
         placeholder={getPlaceholder(leftName)}
-        customSave={customSave}
+        switchItem={leftSwitch}
+        switchStatus={checks?.leftChecked}
       />
       <Input
-        label={rLabel}
-        switchItem={rightSwitch}
+        customSave={customSave}
         handleSwitch={handleSwitch}
-        switchStatus={checks?.rightChecked}
+        label={rLabel}
         name={rName}
         placeholder={getPlaceholder(rName)}
-        customSave={customSave}
+        switchItem={rightSwitch}
+        switchStatus={checks?.rightChecked}
       />
     </div>
-  )
-}
+  );
+};
 
 export default FormRow;

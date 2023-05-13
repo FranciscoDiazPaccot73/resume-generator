@@ -1,15 +1,16 @@
-import { createSlice } from "@reduxjs/toolkit";
+/* eslint-disable no-param-reassign */
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   globalInfo: {},
 };
 
 const searchSlice = createSlice({
-  name: "state",
+  name: 'state',
   initialState,
   reducers: {
     setGlobalInfo: (state, action) => {
-      state.globalInfo = {...state.globalInfo, ...action.payload};
+      state.globalInfo = { ...state.globalInfo, ...action.payload };
     },
   },
 });

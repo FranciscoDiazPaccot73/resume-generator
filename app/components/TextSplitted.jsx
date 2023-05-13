@@ -3,6 +3,6 @@ const TextSplitted = ({ left, right }) => (
     <p>{left}</p>
     <p>{right}</p>
   </div>
-)
+);
 
 export default TextSplitted;
