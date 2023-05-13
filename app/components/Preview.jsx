@@ -1,6 +1,6 @@
 import styles from '../templates/page.module.scss';
 
-const Preview = ({ imageSrc }) => (
+const Preview = ({ imageSrc, shouldShow = true }) => (
   <div
     style={{
       height: '200px',
@@ -12,7 +12,7 @@ const Preview = ({ imageSrc }) => (
     }}
   >
     <img alt="Preview" src={imageSrc} />
-    <div className={styles.previewButton}>Preview</div>
+    {shouldShow && <div className={styles.previewButton}>Preview</div>}
   </div>
 );
 

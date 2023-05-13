@@ -32,7 +32,9 @@ const FormRowCalendar = ({ onChange, startDate, endDate, currentWork }) => {
   };
 
   const handleCalendar = (newVal) => {
-    if (newVal === showCalendar || (newVal === 'enddate' && !startDate) || currentWork) return setCalendarToShow(null);
+    const evalEndDate = newVal === 'enddate' && newVal === 'enddate' && !startDate;
+
+    if (newVal === showCalendar || evalEndDate) return setCalendarToShow(null);
 
     return setCalendarToShow(newVal);
   };

@@ -1,10 +1,11 @@
 import { useState } from 'react';
 
-import { store } from '@/store';
-
 import Button from './Button';
 import FormRow from './FormRow';
 import FormRowCalendar from './FormRowCalendar';
+
+import { store } from '@/store';
+import { setGlobalInfo } from '@/store/searchSlice';
 
 import styles from './Form.module.scss';
 
@@ -26,7 +27,14 @@ const Form = () => {
 
   const handleCreate = () => {
     if (!buttonDisabled) {
-      console.log(newJobInfo);
+      const jobs = globalInfo.jobs ? [...globalInfo.jobs] : [];
+
+      const startDateTimestamp = newJobInfo.startDate.getTime();
+      const endDateTimestamp = newJobInfo.endDate ? newJobInfo.endDate.getTime() : null;
+
+      jobs.push({ ...newJobInfo, startDate: startDateTimestamp, endDate: endDateTimestamp });
+      store.dispatch(setGlobalInfo({ jobs }));
+      setJobInfo({ id: jobs.length + 1 });
     }
   };
 
