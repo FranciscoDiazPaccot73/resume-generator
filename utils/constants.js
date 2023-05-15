@@ -10,7 +10,7 @@ export const colors = [
 export const steps = [
   { id: 'config', label: 'Configuration' },
   { id: 'heading', label: 'Heading' },
-  { id: 'work', label: 'Work Hostory' },
+  { id: 'work', label: 'Work History' },
   { id: 'education', label: 'Education' },
   { id: 'skills', label: 'Skills' },
   { id: 'confirm', label: 'Confirmation' },

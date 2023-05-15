@@ -11,7 +11,7 @@ import { createHash } from '@/utils';
 
 import styles from './Form.module.scss';
 
-const Form = ({ resetCardState }) => {
+const Form = ({ resetCardState, setJobs }) => {
   const { globalInfo } = store.getState().state;
   const [checks, setChecks] = useState({ city: false, country: false });
   const [newJobInfo, setJobInfo] = useState({ id: createHash(3) });
@@ -37,6 +37,7 @@ const Form = ({ resetCardState }) => {
 
       jobs.push({ ...newJobInfo, startDate: startDateTimestamp, endDate: endDateTimestamp });
       store.dispatch(setGlobalInfo({ jobs }));
+      setJobs(jobs);
       setJobInfo({ id: createHash(3) });
       resetCardState();
     }

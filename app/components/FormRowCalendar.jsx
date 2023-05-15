@@ -1,8 +1,9 @@
 'use client';
 
-import clsx from 'clsx';
 import { useState } from 'react';
+import clsx from 'clsx';
 
+import { FaRegCalendarAlt } from 'react-icons/fa';
 import Calendar from './Calendar';
 import Switch from './Switch';
 
@@ -52,6 +53,9 @@ const FormRowCalendar = ({ onChange, startDate, endDate, currentWork }) => {
           </div>
           <div className={startCalendarClasses} type="text" onClick={() => handleCalendar('startdate')}>
             {startDate && `${toLocalString(startDate)}`}
+            <div className="ml-auto">
+              <FaRegCalendarAlt />
+            </div>
           </div>
         </label>
         {showCalendar === 'startdate' ? <Calendar value={calendarStartDate} onChange={(val) => handleSetDate('startdate', val)} /> : null}
@@ -63,6 +67,9 @@ const FormRowCalendar = ({ onChange, startDate, endDate, currentWork }) => {
           </div>
           <div className={endCalendarClasses} type="text" onClick={() => handleCalendar('enddate')}>
             {endDate && `${toLocalString(endDate)}`}
+            <div className="ml-auto">
+              <FaRegCalendarAlt />
+            </div>
           </div>
         </label>
         <div className="flex justify-between mt-1">

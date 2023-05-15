@@ -14,3 +14,15 @@ export const createHash = (length = 4) => {
 
   return hash;
 };
+
+export const getHexa = (color) => {
+  const colors = {
+    red: '#e30812',
+    pink: '#e730d9',
+    blue: '#1e24dd',
+    purple: '#9c1edd',
+    orange: '#dd651e',
+  };
+
+  return colors[color] ?? '#000';
+};

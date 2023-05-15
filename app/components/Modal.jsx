@@ -4,7 +4,7 @@ import Resume from './Resume';
 
 import styles from '../templates/page.module.scss';
 
-const Modal = ({ modal, setModal, info }) => {
+const Modal = ({ modal, setModal, info, selectedColor }) => {
   return (
     <AnimatePresence>
       {modal && (
@@ -30,7 +30,7 @@ const Modal = ({ modal, setModal, info }) => {
             </button>
             <div className="relative overflow-hidden h-auto" style={{ maxHeight: '592px' }}>
               <div className={`relative overflow-scroll ${styles.dialog}`}>
-                <Resume {...{ info }} />
+                <Resume {...{ info }} selectedColor={selectedColor} />
               </div>
             </div>
           </motion.div>

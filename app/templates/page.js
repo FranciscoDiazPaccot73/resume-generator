@@ -61,7 +61,7 @@ export default function Templates() {
             </motion.div>
           </AnimatePresence>
         </motion.div>
-        <Modal {...{ modal, setModal, info: globalInfo }} />
+        <Modal {...{ modal, setModal, info: globalInfo, selectedColor }} />
       </main>
     </Provider>
   );

@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 import { FaRegTrashAlt } from 'react-icons/fa';
 import Form from './FormWork';
@@ -12,8 +12,9 @@ import { toLocalString } from '@/utils';
 import styles from './Resume.module.scss';
 
 const JobContainer = ({ imageSrc, previewClick }) => {
-  const [showCard, setShowCard] = useState(false);
   const { globalInfo } = store.getState().state;
+  const [showCard, setShowCard] = useState(false);
+  const [jobsToShow, setJobs] = useState(globalInfo.jobs);
 
   const handlePreviewClick = () => {
     if (globalInfo.jobs) previewClick();
@@ -23,9 +24,8 @@ const JobContainer = ({ imageSrc, previewClick }) => {
     const newJobs = globalInfo.jobs?.filter((job) => job.id !== id);
 
     store.dispatch(setGlobalInfo({ jobs: newJobs }));
+    setJobs(newJobs);
   };
-
-  console.log(globalInfo.jobs);
 
   return (
     <div className="relative md:mx-auto md:max-w-6xl md:min-w-2xl">
@@ -56,7 +56,7 @@ const JobContainer = ({ imageSrc, previewClick }) => {
                 initial={{ opacity: 0 }}
                 style={{ width: '600px' }}
               >
-                <Form resetCardState={() => setShowCard(false)} />
+                <Form resetCardState={() => setShowCard(false)} setJobs={(jobs) => setJobs(jobs)} />
               </motion.div>
             ) : (
               <motion.h4
@@ -69,7 +69,7 @@ const JobContainer = ({ imageSrc, previewClick }) => {
             )}
           </motion.div>
           <section className="flex flex-col gap-3">
-            {globalInfo.jobs?.map(({ id, job, startDate, endDate, employer, currentWork, description }) => (
+            {jobsToShow?.map(({ id, job, startDate, endDate, employer, currentWork, description }) => (
               <div key={id} className="max-w-4xl w-full rounded-lg p-6 bg-secondary-black relative">
                 <div className="absolute p-2 rounded-xl cursor-pointer right-0 top-0" onClick={() => handleRemoveJob(id)}>
                   <FaRegTrashAlt color="#fff" height="12" width="12" />
@@ -83,13 +83,13 @@ const JobContainer = ({ imageSrc, previewClick }) => {
                   </div>
                   <p className="text-md text-main-dark">{job}</p>
                 </div>
-                <div>
+                <ul className="mt-3">
                   {description?.map((desc) => (
-                    <p key={desc.hash} className="mt-3 text-white text-sm">
+                    <li key={desc.hash} className="text-white text-sm">
                       - {desc.value}
-                    </p>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             ))}
           </section>
