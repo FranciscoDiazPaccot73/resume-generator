@@ -2,7 +2,7 @@
 
 import { createTemplate } from '@/utils/templates';
 
-const Download = ({ info }) => {
+const Download = () => {
   const name = 'FRANCISCO DIAZ PACCOT';
   const profession = 'Frontend Software Engineer';
   const webpage = 'https://www.franciscodiazpaccot.dev';

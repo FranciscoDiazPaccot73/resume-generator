@@ -5,7 +5,7 @@ import 'react-calendar/dist/Calendar.css';
 import styles from './Calendar.module.scss';
 
 const CalendarComponent = ({ onChange, value, position = 'left', siblingDate }) => {
-  const wrapperClasses = clsx('absolute top-16', {
+  const wrapperClasses = clsx('absolute top-16 z-10', {
     [`${position}-0`]: position,
   });
 

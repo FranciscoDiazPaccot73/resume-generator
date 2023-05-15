@@ -6,16 +6,16 @@ import { useState } from 'react';
 import Calendar from './Calendar';
 import Switch from './Switch';
 
+import { toLocalString } from '@/utils';
+
 const FormRowCalendar = ({ onChange, startDate, endDate, currentWork }) => {
   const [calendarStartDate, setStartDate] = useState(new Date());
   const [calendarEndDate, setEndDate] = useState(new Date());
   const [showCalendar, setCalendarToShow] = useState();
-  const dateOptions = { month: 'short', year: 'numeric' };
 
-  const calendarClasses = 'w-full h-10 rounded-full text-black px-3 outline-none bg-white cursor-pointer flex items-center';
-  const endCalendarClasses = clsx(calendarClasses, {
-    'opacity-50': !startDate || currentWork,
-  });
+  const baseCalendarClasses = 'w-full h-10 rounded-full text-black px-3 outline-none cursor-pointer flex items-center';
+  const startCalendarClasses = clsx(baseCalendarClasses, 'bg-white');
+  const endCalendarClasses = clsx(baseCalendarClasses, !startDate || currentWork ? 'bg-gray-disabled' : 'bg-white');
 
   const handleSetDate = (calendar, value) => {
     setCalendarToShow(null);
@@ -44,14 +44,14 @@ const FormRowCalendar = ({ onChange, startDate, endDate, currentWork }) => {
   };
 
   return (
-    <div className="flex justify-between gap-4 mb-10">
+    <div className="flex justify-between gap-4">
       <div className="w-[250px] relative">
         <label className="text-white">
           <div className="flex justify-between">
             <p className="pl-2 text-white">Start Date</p>
           </div>
-          <div className={calendarClasses} type="text" onClick={() => handleCalendar('startdate')}>
-            {startDate && `${startDate.toLocaleString('en-US', dateOptions)}`}
+          <div className={startCalendarClasses} type="text" onClick={() => handleCalendar('startdate')}>
+            {startDate && `${toLocalString(startDate)}`}
           </div>
         </label>
         {showCalendar === 'startdate' ? <Calendar value={calendarStartDate} onChange={(val) => handleSetDate('startdate', val)} /> : null}
@@ -62,7 +62,7 @@ const FormRowCalendar = ({ onChange, startDate, endDate, currentWork }) => {
             <p className="pl-2 text-white">End Date</p>
           </div>
           <div className={endCalendarClasses} type="text" onClick={() => handleCalendar('enddate')}>
-            {endDate && `${endDate.toLocaleString('en-US', dateOptions)}`}
+            {endDate && `${toLocalString(endDate)}`}
           </div>
         </label>
         <div className="flex justify-between mt-1">
